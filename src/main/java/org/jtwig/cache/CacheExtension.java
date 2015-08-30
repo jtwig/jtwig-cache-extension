@@ -2,7 +2,6 @@ package org.jtwig.cache;
 
 
 import org.jtwig.cache.configuration.CacheConfiguration;
-import org.jtwig.cache.node.CacheNode;
 import org.jtwig.cache.parser.CacheAddonParser;
 import org.jtwig.cache.parser.CacheKeyword;
 import org.jtwig.environment.EnvironmentConfigurationBuilder;
