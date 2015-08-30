@@ -16,7 +16,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.jtwig:jtwig-versioning:1.2'
+        classpath 'org.jtwig:jtwig-versioning:1.+'
     }
 }
 
