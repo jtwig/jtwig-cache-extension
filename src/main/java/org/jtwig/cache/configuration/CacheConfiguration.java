@@ -1,8 +1,11 @@
 package org.jtwig.cache.configuration;
 
+import org.jtwig.cache.provider.CompositeRenderableCacheProvider;
 import org.jtwig.cache.provider.RenderableCacheProvider;
 import org.jtwig.environment.Environment;
 import org.jtwig.environment.EnvironmentConfigurationBuilder;
+
+import java.util.Collection;
 
 public class CacheConfiguration {
     private static final String CACHE_PROVIDER = "cacheProvider";
@@ -10,13 +13,17 @@ public class CacheConfiguration {
         return environment.parameter(CACHE_PROVIDER);
     }
 
-    private final RenderableCacheProvider cacheProvider;
+    private final Collection<RenderableCacheProvider> cacheProviders;
 
-    public CacheConfiguration(RenderableCacheProvider cacheProvider) {
-        this.cacheProvider = cacheProvider;
+    public CacheConfiguration(Collection<RenderableCacheProvider> cacheProviders) {
+        this.cacheProviders = cacheProviders;
     }
 
     public void configure (EnvironmentConfigurationBuilder builder) {
-        builder.withParameter(CACHE_PROVIDER, cacheProvider);
+        builder.withParameter(CACHE_PROVIDER, new CompositeRenderableCacheProvider(cacheProviders));
+    }
+
+    public Collection<RenderableCacheProvider> getCacheProviders() {
+        return cacheProviders;
     }
 }
