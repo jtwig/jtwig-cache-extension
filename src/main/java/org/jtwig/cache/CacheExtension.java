@@ -2,8 +2,10 @@ package org.jtwig.cache;
 
 
 import org.jtwig.cache.configuration.CacheConfiguration;
+import org.jtwig.cache.node.CacheNode;
 import org.jtwig.cache.parser.CacheAddonParser;
 import org.jtwig.cache.parser.CacheKeyword;
+import org.jtwig.cache.render.node.CacheNodeRender;
 import org.jtwig.environment.EnvironmentConfigurationBuilder;
 import org.jtwig.extension.Extension;
 import org.jtwig.parser.addon.AddonParserProvider;
@@ -31,6 +33,6 @@ public class CacheExtension implements Extension {
             public Collection<String> keywords() {
                 return CacheKeyword.all();
             }
-        });
+        }).and().render().withRender(CacheNode.class, new CacheNodeRender());
     }
 }

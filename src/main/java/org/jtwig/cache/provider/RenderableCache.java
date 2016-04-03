@@ -2,7 +2,7 @@ package org.jtwig.cache.provider;
 
 import com.google.common.cache.Cache;
 import org.jtwig.cache.key.KeyGenerator;
-import org.jtwig.render.Renderable;
+import org.jtwig.renderable.Renderable;
 
 public class RenderableCache {
     private final Cache<String, Renderable> cache;
