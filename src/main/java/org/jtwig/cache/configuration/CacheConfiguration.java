@@ -20,7 +20,7 @@ public class CacheConfiguration {
     }
 
     public void configure (EnvironmentConfigurationBuilder builder) {
-        builder.withParameter(CACHE_PROVIDER, new CompositeRenderableCacheProvider(cacheProviders));
+        builder.parameters().add(CACHE_PROVIDER, new CompositeRenderableCacheProvider(cacheProviders));
     }
 
     public Collection<RenderableCacheProvider> getCacheProviders() {
