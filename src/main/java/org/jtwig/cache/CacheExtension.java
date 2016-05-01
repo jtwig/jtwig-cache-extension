@@ -23,7 +23,7 @@ public class CacheExtension implements Extension {
     @Override
     public void configure(EnvironmentConfigurationBuilder environmentConfigurationBuilder) {
         configuration.configure(environmentConfigurationBuilder);
-        environmentConfigurationBuilder.parser().withAddonParserProvider(new AddonParserProvider() {
+        environmentConfigurationBuilder.parser().addonParserProviders().add(new AddonParserProvider() {
             @Override
             public Class<? extends AddonParser> parser() {
                 return CacheAddonParser.class;
@@ -33,6 +33,6 @@ public class CacheExtension implements Extension {
             public Collection<String> keywords() {
                 return CacheKeyword.all();
             }
-        }).and().render().withRender(CacheNode.class, new CacheNodeRender());
+        }).and().and().render().nodeRenders().add(CacheNode.class, new CacheNodeRender());
     }
 }

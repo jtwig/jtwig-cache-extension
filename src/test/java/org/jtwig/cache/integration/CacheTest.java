@@ -15,7 +15,7 @@ public class CacheTest {
     @Test
     public void persistentCache() throws Exception {
         String result = JtwigTemplate.inlineTemplate("{% cache persistent 'key' %}Hello{% endcache %}{% cache persistent 'key' %}{% endcache %}", configuration()
-                .withExtension(new CacheExtension(new CacheConfigurationBuilder(new DefaultCacheConfiguration()).build()))
+                .extensions().add(new CacheExtension(new CacheConfigurationBuilder(new DefaultCacheConfiguration()).build())).and()
                 .build()).render(JtwigModel.newModel());
 
         assertThat(result, is("HelloHello"));
