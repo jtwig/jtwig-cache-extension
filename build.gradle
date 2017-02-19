@@ -62,9 +62,4 @@ jtwigRelease {
         user = System.getenv("BINTRAY_USER")
         apiKey = System.getenv("BINTRAY_KEY")
     }
-
-    travis {
-        token = System.getenv("TRAVIS_TOKEN")
-        upstreamProjects = ["jtwig/jtwig-release-plugin"]
-    }
 }
